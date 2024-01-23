@@ -1,42 +1,48 @@
 #include "sort.h"
 
 /**
- * shell_sort - responsible for sorting an array of integers
- * using Shell sort algorithm
- * @array: represents the array to be sorted
- * @size: represents the size of the array
+ * int_swap - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
  */
+void int_swap(int *a, int *b)
+{
+    int tmp;
 
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+/**
+ * shell_sort - reponsible for sorting an array of integers in ascending
+ * order using the shell sort algorithm.
+ * @array: represents an array of integers.
+ * @size: represents the size of the array.
+ *
+ * Description: Uses the Knuth interval sequence.
+ */
 void shell_sort(int *array, size_t size)
 {
-	size_t interval = 1, i, j;
-	int temp;
+    size_t interval, k, j;
 
-	while (interval < size / 3)
-		interval = interval * 3 + 1;
+    if (array == NULL || size < 2)
+        return;
 
-	while (interval > 0)
-	{
-		for (i = interval; i < size; i++)
-		{
-			temp = array[i];
+    for (interval = 1; interval < (size / 3);)
+        interval = interval * 3 + 1;
 
-			for (j = i; j >= interval && array[j - interval] > temp; j -= interval)
-			{
-				array[j] = array[j - interval];
-			}
-
-			array[j] = temp;
-		}
-
-		interval = (interval - 1) / 3;
-
-		for (i = 0; i < size; i++)
-		{
-			printf("%d", array[i]);
-			if (i < size - 1)
-				printf(", ");
-		}
-		printf("\n");
-	}
+    for (; interval >= 1; interval /= 3)
+    {
+        for (k = interval; k < size; k++)
+        {
+            j = k;
+            while (j >= interval && array[j - interval] > array[j])
+            {
+                int_swap(array + j, array + (j - interval));
+                j -= interval;
+            }
+        }
+        print_array(array, size);
+    }
 }
