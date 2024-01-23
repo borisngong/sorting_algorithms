@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "sort.h"
 
 /**
  * shell_sort - responsible for sorting an array of integers
