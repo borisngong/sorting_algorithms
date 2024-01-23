@@ -15,7 +15,7 @@ void int_sawap(int *a, int *b)
 }
 
 /**
- * bubble_sort - responsble for sorting an array of integers in ascending order
+ * bubble_sort - responsble for sorting an array of ints in ascending order
  * @array: represents an array of integers to sort.
  * @size: represnts the size of the array.
  *
