@@ -5,7 +5,7 @@
  * @a: represents the first integer to swap.
  * @b: represents the second integer to swap.
  */
-void int_sawap(int *a, int *b)
+void int_swap(int *a, int *b)
 {
 	int tmp;
 
@@ -19,13 +19,11 @@ void int_sawap(int *a, int *b)
  * @array: represents an array of integers to sort.
  * @size: represnts the size of the array.
  *
- * Description: After each pass the array is printed
- * Return: Always void
+* Description: Prints the array after each time two elements are swapped.
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t k;
-	size_t longii = size;
+	size_t i, len = size;
 	bool swap = false;
 
 	if (array == NULL || size < 2)
@@ -34,15 +32,15 @@ void bubble_sort(int *array, size_t size)
 	while (swap == false)
 	{
 		swap = true;
-		for (k = 0; k < longii - 1; k++)
+		for (i = 0; i < len - 1; i++)
 		{
-			if (array[k] > array[k + 1])
+			if (array[i] > array[i + 1])
 			{
-				int_sawap(array + k, array + k + 1);
+				int_swap(array + i, array + i + 1);
 				print_array(array, size);
 				swap = false;
 			}
 		}
-		longii--;
+		len--;
 	}
 }
